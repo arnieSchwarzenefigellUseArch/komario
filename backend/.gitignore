@@ -1,0 +1,40 @@
+# Бинарные файлы
+*.exe
+*.exe~
+*.dll
+*.so
+*.dylib
+*.test
+*.out
+
+# Кэш Go
+go.sum
+*.log
+
+# Папка сборки
+/build/
+/bin/
+/dist/
+
+# IDE и редакторы
+.vscode/
+.idea/
+*.swp
+
+# Системные файлы
+.DS_Store
+Thumbs.db
+
+# Модули и зависимости
+vendor/
+
+# Тестовые артефакты
+*.coverprofile
+*.testresult
+
+# Конфигурации и секреты (если есть)
+.env
+.env.local
+config.yaml
+config.json
+

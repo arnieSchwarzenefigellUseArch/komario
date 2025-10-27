@@ -1,0 +1,40 @@
+# Backend - Go
+backend/bin/
+backend/build/
+backend/dist/
+backend/vendor/
+backend/*.exe
+backend/*.exe~
+backend/*.dll
+backend/*.so
+backend/*.dylib
+backend/*.test
+backend/*.out
+backend/go.sum
+backend/*.log
+backend/*.coverprofile
+backend/*.testresult
+
+# Frontend
+frontend/node_modules/
+frontend/dist/
+frontend/build/
+frontend/*.log
+
+# Конфигурации и секреты
+.env
+.env.local
+*.env
+backend/config/config.yaml
+backend/config/config.json
+
+# IDE и редакторы
+.vscode/
+.idea/
+*.swp
+*.swo
+*~
+
+# Системные файлы
+.DS_Store
+Thumbs.db
