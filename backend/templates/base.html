@@ -1,0 +1,108 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>{{.Title}}</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="icon" href="/favicon.ico" type="image/x-icon">
+    
+    <!-- Google Fonts ЕБАААААТЬЬ я нашел fontы бля -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Courier+Prime:ital,wght@0,400;0,700;1,400;1,700&family=Playfair+Display:ital,wght@0,400..900;1,400..900&family=Source+Code+Pro:ital,wght@0,200..900;1,200..900&display=swap" rel="stylesheet">
+    
+    <!-- Typed.js для печатной машинки -->
+    <script src="https://cdn.jsdelivr.net/npm/typed.js@2.0.12"></script>
+    
+    <!-- CSS файлы для конкретной страницы -->
+    {{range .CSSFiles}}
+        <link rel="stylesheet" href="{{.}}">
+    {{end}}
+</head>
+<body>
+   
+    
+    {{template "header.html" .}}
+    
+  
+    {{.Content}}
+    
+    <!-- Кнопка скролла вверх -->
+    <button class="scroll-to-top" id="scrollToTop"></button>
+     <footer>
+        <p>&copy; komar.io 2025</p>
+    </footer>
+    <!-- JS файлы для конкретной страницы -->
+    {{range .JSFiles}}
+        <script src="{{.}}"></script>
+    {{end}}
+    
+    <!-- Анимации скролла -->
+    <script src="/js/scroll-animations.js"></script>
+    
+    <!-- Скрипт для навигации и скролла -->
+    <script>
+        // Кнопка скролла вверх
+        const scrollToTopBtn = document.getElementById('scrollToTop');
+        
+        window.addEventListener('scroll', () => {
+            if (window.pageYOffset > 300) {
+                scrollToTopBtn.classList.add('visible');
+            } else {
+                scrollToTopBtn.classList.remove('visible');
+            }
+        });
+        
+        scrollToTopBtn.addEventListener('click', () => {
+            window.scrollTo({
+                top: 0,
+                behavior: 'smooth'
+            });
+        });
+        
+        // Активная ссылка в навигации
+        const currentPath = window.location.pathname;
+        const navLinks = document.querySelectorAll('.nav-link');
+        
+        navLinks.forEach(link => {
+            if (link.getAttribute('href') === currentPath) {
+                link.classList.add('active');
+            }
+        });
+        
+        // Мобильная навигация
+        const mobileToggle = document.getElementById('mobileNavToggle');
+        const mobileOverlay = document.getElementById('mobileNavOverlay');
+        
+        if (mobileToggle && mobileOverlay) {
+            mobileToggle.addEventListener('click', () => {
+                const isOpen = mobileOverlay.style.display === 'block';
+                
+                if (isOpen) {
+                    mobileOverlay.style.display = 'none';
+                    mobileToggle.classList.remove('active');
+                } else {
+                    mobileOverlay.style.display = 'block';
+                    mobileToggle.classList.add('active');
+                }
+            });
+            
+            mobileOverlay.addEventListener('click', (e) => {
+                if (e.target === mobileOverlay) {
+                    mobileOverlay.style.display = 'none';
+                    mobileToggle.classList.remove('active');
+                }
+            });
+            
+            document.querySelectorAll('.mobile-nav-menu a').forEach(link => {
+                link.addEventListener('click', () => {
+                    mobileOverlay.style.display = 'none';
+                    mobileToggle.classList.remove('active');
+                });
+            });
+        }
+    </script>
+</body>
+</html>
+
+
+
