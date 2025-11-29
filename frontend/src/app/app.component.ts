@@ -1,23 +1,33 @@
 import { Component } from '@angular/core';
+import { RouterOutlet, RouterLink } from '@angular/router';
 
 @Component({
   selector: 'app-root',
   standalone: true,
+  imports: [RouterOutlet, RouterLink],
   template: `
-    <div>
-      <h1>🧀 Komario Works!</h1>
-      <p>Angular приложение запущено успешно!</p>
-    </div>
+    <nav>
+      <a routerLink="/">Главная</a>
+      <a routerLink="/catalog">Каталог</a>
+      <a routerLink="/about">О нас</a>
+    </nav>
+    
+    <router-outlet></router-outlet>
   `,
   styles: [`
-    div {
+    nav {
+      padding: 20px;
+      background: #e17055;
       text-align: center;
-      padding: 50px;
-      font-family: Arial, sans-serif;
     }
-    h1 {
-      color: #e17055;
-      font-size: 3em;
+    nav a {
+      color: white;
+      margin: 0 20px;
+      text-decoration: none;
+      font-size: 18px;
+    }
+    nav a:hover {
+      text-decoration: underline;
     }
   `]
 })

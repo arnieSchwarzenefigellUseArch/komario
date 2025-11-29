@@ -134,10 +134,8 @@ func Catalog(c *gin.Context) {
 
     `)
 
-	c.HTML(200, "base.html", gin.H{
-		"Title":    "Catalog",
-		"Content":  html,
-		"CSSFiles": []string{"/css/style.css"},
-		"JSFiles":  []string{"/js/main.js"},
+	c.JSON(200, gin.H{
+		"Title":   "Catalog",
+		"Content": html,
 	})
 }

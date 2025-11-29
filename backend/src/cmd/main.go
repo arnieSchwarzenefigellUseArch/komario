@@ -4,7 +4,6 @@ import (
 	Handlers "komario/backend/internal/handlers"
 
 	"github.com/gin-contrib/cors"
-
 	"github.com/gin-gonic/gin"
 )
 

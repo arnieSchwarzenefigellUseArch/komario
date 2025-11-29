@@ -1,8 +1,6 @@
 package Handlers
 
 import (
-	"html/template"
-
 	"github.com/gin-gonic/gin"
 )
 
@@ -82,10 +80,8 @@ func History(c *gin.Context) {
 	</div>
 	</main>
 	`
-	c.HTML(200, "base.html", gin.H{
-		"Title":    "История Сыров",
-		"Content":  template.HTML(html),
-		"CSSFiles": []string{"/css/style.css"},
-		"JSFiles":  []string{"/js/main.js"},
+	c.JSON(200, gin.H{
+		"Title":   "История Сыров",
+		"Content": html,
 	})
 }
